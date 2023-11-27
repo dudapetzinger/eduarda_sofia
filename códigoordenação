@@ -1,0 +1,89 @@
+function compare(a, b) {
+    return a - b;
+}
+
+function calcularMedia(array) {
+    const soma = array.reduce((acc, num) => acc + num, 0);
+    return soma / array.length;
+}
+
+function calcularModa(array) {
+    let moda = array[0];
+    let contagem = 1;
+    let modaAtual = 1;
+
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] === array[i - 1]) {
+            contagem++;
+        } else {
+            contagem = 1;
+        }
+
+        if (contagem > modaAtual) {
+            modaAtual = contagem;
+            moda = array[i];
+        }
+    }
+
+    return moda;
+}
+
+function calcularMediana(array) {
+    const meio = Math.floor(array.length / 2);
+
+    if (array.length % 2 === 0) {
+        // Se o número de elementos for par, a mediana é a média dos dois elementos do meio
+        return (array[meio - 1] + array[meio]) / 2;
+    } else {
+        // Se o número de elementos for ímpar, a mediana é o elemento do meio
+        return array[meio];
+    }
+}
+
+const dados = [
+    13, 56, 28, 75, 42, 95, 11, 64, 37, 88,
+    24, 79, 63, 16, 51, 92, 6, 47, 32, 71,
+    19, 68, 82, 40, 87, 8, 59, 34, 70, 22,
+    76, 4, 61, 27, 69, 14, 83, 55, 91, 7,
+    43, 78, 31, 60, 25, 72, 49, 85, 10, 54,
+    30, 74, 17, 67, 38, 94, 5, 46, 21, 80,
+    12, 53, 33, 90, 66, 36, 81, 29, 62, 20,
+    73, 9, 58, 35, 89, 18, 65, 39, 93, 15,
+    52, 77, 48, 86, 3, 57, 23, 84, 41, 1,
+    44, 26, 50, 98, 110, 102, 116, 107, 104, 112,
+    108, 103, 105, 100, 99, 109, 101, 111, 115, 114,
+    113, 106, 120, 122, 124, 125, 128, 121, 123, 118,
+    126, 119, 117, 127, 130, 136, 131, 129, 137, 138,
+    134, 133, 135, 132, 142, 146, 148, 145, 141, 149,
+    143, 144, 150, 140, 139, 147, 152, 155, 153, 151,
+    156, 154, 157, 158, 161, 159, 163, 162, 160, 165,
+    166, 168, 167, 170, 164, 169, 172, 174, 173, 175,
+    178, 177, 179, 180, 176, 182, 181, 184, 183, 185,
+    187, 188, 190, 186, 189, 192, 193, 191, 194, 195,
+    196, 197, 198, 199, 201, 200, 202, 205, 204, 206,
+    203, 208, 207, 210, 209, 211, 214, 213, 212, 216,
+    215, 218, 217, 219, 221, 220, 223, 222, 225, 224,
+    227, 226, 228, 230, 229, 231, 234, 232, 235, 236,
+    233, 238, 237, 239, 240, 241, 243, 242, 245, 244,
+    246, 248, 247, 249, 250, 252, 251, 254, 253, 256,
+    255, 257, 259, 258, 260, 262, 261, 264, 263, 266,
+    265, 267, 269, 268, 270, 272, 271, 274, 273, 276,
+    275, 277, 279, 278, 281, 280, 282, 284, 283, 285,
+    287, 286, 288, 289, 290, 292, 291, 294, 293, 295,
+    297, 296, 298, 299, 300
+];
+
+// Ordenar dados
+dados.sort(compare);
+
+// Calcular média
+const media = calcularMedia(dados);
+console.log("Média:", media);
+
+// Calcular moda
+const moda = calcularModa(dados);
+console.log("Moda:", moda);
+
+// Calcular mediana
+const mediana = calcularMediana(dados);
+console.log("Mediana:", mediana);
